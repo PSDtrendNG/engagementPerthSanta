@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engagement × PerthSanta</title>
+  <meta name="description" content="Engagement Hub for PerthSanta – Support the perfume campaign with media links & comment generators." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0b;
+      --card: rgba(255, 255, 255, 0.05);
+      --card-hover: rgba(255, 255, 255, 0.09);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f5f5f7;
+      --muted: #a1a1aa;
+      --accent: #c9a87c;          /* warm gold – perfume luxury */
+      --accent-soft: rgba(201, 168, 124, 0.18);
+      --x-color: #e7e9ea;
+      --ig-color: #e1306c;
+      --radius: 16px;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ========== HEADER / BANNER ========== */
+    .hero {
+      position: relative;
+      height: 42vh;
+      min-height: 280px;
+      max-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://psdengagement.github.io/perthsanta-hub/images/hero-perthsanta.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      filter: blur(6px) brightness(0.45) saturate(0.9);
+      transform: scale(1.08);
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 11, 0.35) 0%,
+        rgba(10, 10, 11, 0.55) 50%,
+        rgba(10, 10, 11, 0.92) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(1.9rem, 6vw, 3.4rem);
+      letter-spacing: 0.02em;
+      color: #fff;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+      line-height: 1.15;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500;
+    }
+
+    /* ========== MAIN CONTENT ========== */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 28px 20px 60px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    /* ========== MEDIA LINKS ========== */
+    .platform-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .platform-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 22px 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .platform-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.04));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .platform-btn:hover,
+    .platform-btn.active {
+      background: var(--card-hover);
+      border-color: rgba(201, 168, 124, 0.45);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .platform-btn:hover::before,
+    .platform-btn.active::before {
+      opacity: 1;
+    }
+
+    .platform-btn .icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .platform-btn[data-platform="x"] .icon-wrap {
+      color: var(--x-color);
+    }
+
+    .platform-btn[data-platform="ig"] .icon-wrap {
+      color: var(--ig-color);
+    }
+
+    .platform-btn svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    /* Links list */
+    .links-panel {
+      display: none;
+      animation: fadeSlide 0.3s ease;
+    }
+
+    .links-panel.show {
+      display: block;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.22s ease;
+      margin-bottom: 10px;
+    }
+
+    .link-card:hover {
+      background: var(--card-hover);
+      border-color: rgba(201, 168, 124, 0.4);
+      transform: translateX(4px);
+    }
+
+    .link-card .mini-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .link-card .mini-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .link-card .info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .link-card .info strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .link-card .info span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .link-card .arrow {
+      color: var(--muted);
+      font-size: 1.1rem;
+      transition: transform 0.2s;
+    }
+
+    .link-card:hover .arrow {
+      transform: translateX(3px);
+      color: var(--accent);
+    }
+
+    /* ========== COMMENT GENERATORS ========== */
+    .gen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .gen-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 22px 12px;
+      background: linear-gradient(145deg, rgba(201, 168, 124, 0.12), rgba(201, 168, 124, 0.04));
+      border: 1px solid rgba(201, 168, 124, 0.28);
+      border-radius: var(--radius);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .gen-btn:hover {
+      background: linear-gradient(145deg, rgba(201, 168, 124, 0.22), rgba(201, 168, 124, 0.08));
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(201, 168, 124, 0.18);
+    }
+
+    .gen-btn .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .gen-btn small {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* Footer note */
+    .footer-note {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-note a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .hero {
+        height: 36vh;
+        min-height: 240px;
+      }
+
+      .platform-row {
+        gap: 10px;
+      }
+
+      .platform-btn {
+        padding: 18px 12px;
+      }
+
+      .gen-grid {
+        gap: 10px;
+      }
+
+      .gen-btn {
+        padding: 18px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== 1. HEADER / BANNER ===== -->
+  <header class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Engagement <span>×</span> PerthSanta</h1>
+      <p class="hero-sub">Perfume Campaign Support</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ===== 2. MEDIA LINKS SECTION ===== -->
+    <section>
+      <p class="section-label">Media Links</p>
+
+      <div class="platform-row">
+        <button class="platform-btn" data-platform="x" aria-expanded="false">
+          <div class="icon-wrap">
+            <!-- X (Twitter) icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.792l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
+            </svg>
+          </div>
+          <span>X (Twitter)</span>
+        </button>
+
+        <button class="platform-btn" data-platform="ig" aria-expanded="false">
+          <div class="icon-wrap">
+            <!-- Instagram icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </div>
+          <span>Instagram</span>
+        </button>
+      </div>
+
+      <!-- X Links Panel -->
+      <div id="panel-x" class="links-panel">
+        <a class="link-card" href="https://perthsanta-captions-sparkle.lovable.app/" target="_blank" rel="noopener">
+          <div class="mini-icon" style="color: var(--x-color);">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.792l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+          </div>
+          <div class="info">
+            <strong>PerthSanta Captions Sparkle</strong>
+            <span>Bài viết & caption hỗ trợ trên X</span>
+          </div>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <!-- IG Links Panel -->
+      <div id="panel-ig" class="links-panel">
+        <a class="link-card" href="https://perthsanta-captions-sparkle.lovable.app/" target="_blank" rel="noopener">
+          <div class="mini-icon" style="color: var(--ig-color);">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+          <div class="info">
+            <strong>PerthSanta Captions Sparkle</strong>
+            <span>Bài viết & caption hỗ trợ trên Instagram</span>
+          </div>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== 3. COMMENT GENERATORS ===== -->
+    <section>
+      <p class="section-label">Comment Generators</p>
+
+      <div class="gen-grid">
+        <a class="gen-btn" href="https://perthsanta-captions-sparkle.lovable.app/" target="_blank" rel="noopener">
+          <span class="num">1</span>
+          <span>Gen 1</span>
+          <small>Comment</small>
+        </a>
+        <a class="gen-btn" href="https://perthsanta-captions-sparkle.lovable.app/" target="_blank" rel="noopener">
+          <span class="num">2</span>
+          <span>Gen 2</span>
+          <small>Comment</small>
+        </a>
+        <a class="gen-btn" href="https://perthsanta-captions-sparkle.lovable.app/" target="_blank" rel="noopener">
+          <span class="num">3</span>
+          <span>Gen 3</span>
+          <small>Comment</small>
+        </a>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      Made with ♡ for <strong>PerthSanta</strong> · Perfume Campaign
+    </p>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('.platform-btn');
+    const panels = {
+      x: document.getElementById('panel-x'),
+      ig: document.getElementById('panel-ig')
+    };
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const platform = btn.dataset.platform;
+        const isActive = btn.classList.contains('active');
+
+        // Reset all
+        buttons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-expanded', 'false');
+        });
+        Object.values(panels).forEach(p => p.classList.remove('show'));
+
+        // Toggle current
+        if (!isActive) {
+          btn.classList.add('active');
+          btn.setAttribute('aria-expanded', 'true');
+          panels[platform].classList.add('show');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
