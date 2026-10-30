@@ -32,7 +32,6 @@
       overflow-x: hidden;
     }
 
-    /* Hero */
     .hero {
       position: relative;
       height: 42vh;
@@ -75,7 +74,6 @@
     }
     .hero-title span { color: var(--accent); }
 
-    /* Layout */
     .container {
       max-width: 720px;
       margin: 0 auto;
@@ -91,7 +89,6 @@
       font-weight: 600;
     }
 
-    /* Platform buttons */
     .platform-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -146,7 +143,6 @@
     .platform-btn[data-platform="ig"] .icon-wrap { color: var(--ig-color); }
     .platform-btn svg { width: 26px; height: 26px; }
 
-    /* Table panel */
     .table-panel {
       display: none;
       animation: fadeSlide 0.3s ease;
@@ -215,7 +211,6 @@
     .account-cell a:hover { color: var(--accent); }
     .date-cell { width: 90px; color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
 
-    /* Comment Generators */
     .gen-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -262,7 +257,6 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header class="hero">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
@@ -273,7 +267,6 @@
 
   <main class="container">
 
-    <!-- Comment Generators (đưa lên trên) -->
     <section>
       <p class="section-label">COMMENT GENERATORS</p>
       <div class="gen-grid">
@@ -283,7 +276,6 @@
       </div>
     </section>
 
-    <!-- Media Links (chuyển xuống dưới) -->
     <section>
       <p class="section-label">Media Links</p>
       <div class="platform-row">
@@ -315,36 +307,7 @@
               <th class="sortable" style="width:90px">Date <span class="sort-icon">↕</span></th>
             </tr>
           </thead>
-          <tbody>
-            <tr data-date="2026-09-11">
-              <td class="status-cell">🚀</td>
-              <td>
-                <div class="account-cell">
-                  <div class="plat-icon" style="color:var(--x-color)">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.792l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
-                  </div>
-                  <a href="https://x.com/StarArena_/status/2098406086772666733" target="_blank" rel="noopener">
-                    @StarArena_ · PerthSanta × Ralph Lauren
-                  </a>
-                </div>
-              </td>
-              <td class="date-cell">11-Sep</td>
-            </tr>
-            <tr data-date="2026-09-11">
-              <td class="status-cell">🚀</td>
-              <td>
-                <div class="account-cell">
-                  <div class="plat-icon" style="color:var(--x-color)">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.792l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
-                  </div>
-                  <a href="https://x.com/StarArena_/status/2098393475695911397" target="_blank" rel="noopener">
-                    @StarArena_ · PerthSanta Event
-                  </a>
-                </div>
-              </td>
-              <td class="date-cell">11-Sep</td>
-            </tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
 
@@ -362,51 +325,7 @@
               <th class="sortable" style="width:90px">Date <span class="sort-icon">↕</span></th>
             </tr>
           </thead>
-          <tbody>
-            <tr data-date="2026-09-11">
-              <td class="status-cell">🚀</td>
-              <td>
-                <div class="account-cell">
-                  <div class="plat-icon" style="color:var(--ig-color)">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                  </div>
-                  <a href="https://www.instagram.com/reel/DdJmK-eTnla/" target="_blank" rel="noopener">
-                    Instagram Reel · PerthSanta
-                  </a>
-                </div>
-              </td>
-              <td class="date-cell">11-Sep</td>
-            </tr>
-            <tr data-date="2026-09-11">
-              <td class="status-cell">🚀</td>
-              <td>
-                <div class="account-cell">
-                  <div class="plat-icon" style="color:var(--ig-color)">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                  </div>
-                  <a href="https://www.instagram.com/reel/DdJg8OWRS_p/" target="_blank" rel="noopener">
-                    Instagram Reel · PerthSanta
-                  </a>
-                </div>
-              </td>
-              <td class="date-cell">11-Sep</td>
-            </tr>
-            <tr data-date="2026-09-11">
-  <td class="status-cell">🚀</td>
-  <td>
-    <div class="account-cell">
-      <div class="plat-icon" style="color:var(--ig-color)">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-      </div>
-      <a href="instagram://media?shortcode=DdJuPCcS0QZ"
-         onclick="setTimeout(()=>{window.location='https://www.instagram.com/p/DdJuPCcS0QZ/'},400);return true;">
-        Instagram Post · PerthSanta × Ralph Lauren
-      </a>
-    </div>
-  </td>
-  <td class="date-cell">11-Sep</td>
-</tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </section>
@@ -457,15 +376,58 @@
         th.querySelector('.sort-icon').textContent = asc ? '↑' : '↓';
       });
     });
-    // Tự động đếm số posts
-document.querySelectorAll('.table-panel').forEach(panel => {
-  const countEl = panel.querySelector('[data-count]');
-  const rows = panel.querySelectorAll('tbody tr');
-  if (countEl) {
-    countEl.textContent = `${rows.length} posts`;
-  }
-});
+
+    // Load dữ liệu từ data.json
+    async function loadPosts() {
+      try {
+        const res = await fetch('data.json?v=' + Date.now());
+        const data = await res.json();
+
+        const xBody = document.querySelector('#panel-x tbody');
+        xBody.innerHTML = data.x.map(post => `
+          <tr data-date="${post.dateSort}">
+            <td class="status-cell">🚀</td>
+            <td>
+              <div class="account-cell">
+                <div class="plat-icon" style="color:var(--x-color)">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.792l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+                </div>
+                <a href="${post.url}" target="_blank" rel="noopener">${post.title}</a>
+              </div>
+            </td>
+            <td class="date-cell">${post.date}</td>
+          </tr>
+        `).join('');
+
+        const igBody = document.querySelector('#panel-ig tbody');
+        igBody.innerHTML = data.ig.map(post => `
+          <tr data-date="${post.dateSort}">
+            <td class="status-cell">🚀</td>
+            <td>
+              <div class="account-cell">
+                <div class="plat-icon" style="color:var(--ig-color)">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </div>
+                <a href="${post.url}" target="_blank" rel="noopener">${post.title}</a>
+              </div>
+            </td>
+            <td class="date-cell">${post.date}</td>
+          </tr>
+        `).join('');
+
+        // Cập nhật số lượng
+        document.querySelectorAll('.table-panel').forEach(panel => {
+          const countEl = panel.querySelector('[data-count]');
+          const rows = panel.querySelectorAll('tbody tr');
+          if (countEl) countEl.textContent = `${rows.length} posts`;
+        });
+
+      } catch (err) {
+        console.error('Không load được data.json', err);
+      }
+    }
+
+    loadPosts();
   </script>
 </body>
-  </html>
-
+</html>
