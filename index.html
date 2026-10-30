@@ -305,7 +305,7 @@
       <div id="panel-x" class="table-panel">
         <div class="table-header">
           <h3>PerthSanta</h3>
-          <span class="count">2 posts</span>
+          <span class="count" data-count>0 posts</span>
         </div>
         <table class="media-table">
           <thead>
@@ -352,7 +352,7 @@
       <div id="panel-ig" class="table-panel">
         <div class="table-header">
           <h3>PerthSanta</h3>
-          <span class="count">2 posts</span>
+          <span class="count" data-count>0 posts</span>
         </div>
         <table class="media-table">
           <thead>
@@ -443,6 +443,14 @@
       });
     });
   </script>
+  // Tự động đếm số posts
+document.querySelectorAll('.table-panel').forEach(panel => {
+  const countEl = panel.querySelector('[data-count]');
+  const rows = panel.querySelectorAll('tbody tr');
+  if (countEl) {
+    countEl.textContent = `${rows.length} posts`;
+  }
+});
 </body>
   </html>
 
