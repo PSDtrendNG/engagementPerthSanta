@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Engagement × PerthSanta</title>
-  <meta name="description" content="Engagement Hub for PerthSanta – Media links & comment generators." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -22,17 +21,8 @@
       --radius: 16px;
       --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background: var(--bg);
@@ -42,7 +32,7 @@
       overflow-x: hidden;
     }
 
-    /* ========== HEADER / BANNER ========== */
+    /* Hero */
     .hero {
       position: relative;
       height: 42vh;
@@ -53,62 +43,45 @@
       justify-content: center;
       overflow: hidden;
     }
-
     .hero-bg {
       position: absolute;
       inset: 0;
       background-image: url('picnuochoa.jpg');
       background-size: cover;
       background-position: center center;
-      /* Không làm mờ – ảnh rõ nét */
       filter: brightness(0.55) contrast(1.05);
       z-index: 0;
     }
-
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(10, 10, 11, 0.25) 0%,
-        rgba(10, 10, 11, 0.45) 50%,
-        rgba(10, 10, 11, 0.92) 100%
-      );
+      background: linear-gradient(to bottom, rgba(10,10,11,0.25) 0%, rgba(10,10,11,0.45) 50%, rgba(10,10,11,0.92) 100%);
       z-index: 1;
     }
-
     .hero-content {
       position: relative;
       z-index: 2;
       text-align: center;
       padding: 0 20px;
     }
-
     .hero-title {
       font-family: 'Playfair Display', Georgia, serif;
       font-weight: 700;
       font-size: clamp(1.9rem, 6vw, 3.4rem);
       letter-spacing: 0.02em;
       color: #fff;
-      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+      text-shadow: 0 4px 24px rgba(0,0,0,0.6);
       line-height: 1.15;
     }
+    .hero-title span { color: var(--accent); }
 
-    .hero-title span {
-      color: var(--accent);
-    }
-
-    /* ========== MAIN CONTENT ========== */
+    /* Layout */
     .container {
       max-width: 720px;
       margin: 0 auto;
       padding: 28px 20px 60px;
     }
-
-    section {
-      margin-bottom: 40px;
-    }
-
+    section { margin-bottom: 40px; }
     .section-label {
       font-size: 0.75rem;
       letter-spacing: 0.14em;
@@ -118,14 +91,13 @@
       font-weight: 600;
     }
 
-    /* ========== PLATFORM BUTTONS ========== */
+    /* Platform buttons */
     .platform-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
       margin-bottom: 20px;
     }
-
     .platform-btn {
       display: flex;
       flex-direction: column;
@@ -144,7 +116,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .platform-btn::before {
       content: '';
       position: absolute;
@@ -153,7 +124,6 @@
       opacity: 0;
       transition: opacity 0.25s;
     }
-
     .platform-btn:hover,
     .platform-btn.active {
       background: var(--card-hover);
@@ -161,12 +131,8 @@
       transform: translateY(-2px);
       box-shadow: var(--shadow);
     }
-
     .platform-btn:hover::before,
-    .platform-btn.active::before {
-      opacity: 1;
-    }
-
+    .platform-btn.active::before { opacity: 1; }
     .platform-btn .icon-wrap {
       width: 48px;
       height: 48px;
@@ -174,23 +140,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255,255,255,0.08);
     }
+    .platform-btn[data-platform="x"] .icon-wrap { color: var(--x-color); }
+    .platform-btn[data-platform="ig"] .icon-wrap { color: var(--ig-color); }
+    .platform-btn svg { width: 26px; height: 26px; }
 
-    .platform-btn[data-platform="x"] .icon-wrap {
-      color: var(--x-color);
-    }
-
-    .platform-btn[data-platform="ig"] .icon-wrap {
-      color: var(--ig-color);
-    }
-
-    .platform-btn svg {
-      width: 26px;
-      height: 26px;
-    }
-
-    /* ========== TABLE PANEL ========== */
+    /* Table panel */
     .table-panel {
       display: none;
       animation: fadeSlide 0.3s ease;
@@ -199,46 +155,32 @@
       border-radius: var(--radius);
       overflow: hidden;
     }
-
-    .table-panel.show {
-      display: block;
-    }
-
+    .table-panel.show { display: block; }
     @keyframes fadeSlide {
       from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
     .table-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 16px 18px;
       border-bottom: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255,255,255,0.03);
     }
-
     .table-header h3 {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 1.15rem;
       font-weight: 600;
-      color: var(--text);
     }
-
     .table-header .count {
       font-size: 0.78rem;
       color: var(--muted);
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255,255,255,0.06);
       padding: 4px 10px;
       border-radius: 20px;
     }
-
-    /* Table */
-    .media-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
+    .media-table { width: 100%; border-collapse: collapse; }
     .media-table thead th {
       text-align: left;
       padding: 12px 16px;
@@ -248,143 +190,58 @@
       color: var(--muted);
       font-weight: 600;
       border-bottom: 1px solid var(--border);
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba(0,0,0,0.2);
       user-select: none;
     }
-
-    .media-table thead th.sortable {
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-
-    .media-table thead th.sortable:hover {
-      color: var(--accent);
-    }
-
-    .media-table thead th .sort-icon {
-      display: inline-block;
-      margin-left: 4px;
-      font-size: 0.7rem;
-      opacity: 0.6;
-    }
-
-    .media-table tbody tr {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      transition: background 0.2s;
-    }
-
-    .media-table tbody tr:last-child {
-      border-bottom: none;
-    }
-
-    .media-table tbody tr:hover {
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .media-table td {
-      padding: 14px 16px;
-      font-size: 0.9rem;
-      vertical-align: middle;
-    }
-
-    /* Status column */
-    .status-cell {
-      width: 56px;
-      text-align: center;
-      font-size: 1.25rem;
-    }
-
-    /* Account column */
-    .account-cell {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
+    .media-table thead th.sortable { cursor: pointer; }
+    .media-table thead th.sortable:hover { color: var(--accent); }
+    .media-table thead th .sort-icon { margin-left: 4px; font-size: 0.7rem; opacity: 0.6; }
+    .media-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.2s; }
+    .media-table tbody tr:last-child { border-bottom: none; }
+    .media-table tbody tr:hover { background: rgba(255,255,255,0.04); }
+    .media-table td { padding: 14px 16px; font-size: 0.9rem; vertical-align: middle; }
+    .status-cell { width: 56px; text-align: center; font-size: 1.25rem; }
+    .account-cell { display: flex; align-items: center; gap: 10px; }
     .account-cell .plat-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      background: rgba(255, 255, 255, 0.08);
+      width: 28px; height: 28px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.08); flex-shrink: 0;
     }
-
-    .account-cell .plat-icon svg {
-      width: 15px;
-      height: 15px;
-    }
-
+    .account-cell .plat-icon svg { width: 15px; height: 15px; }
     .account-cell a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-      word-break: break-all;
+      color: var(--text); text-decoration: none; font-weight: 500;
+      transition: color 0.2s; word-break: break-all;
     }
+    .account-cell a:hover { color: var(--accent); }
+    .date-cell { width: 90px; color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
 
-    .account-cell a:hover {
-      color: var(--accent);
-    }
-
-    /* Date column */
-    .date-cell {
-      width: 90px;
-      color: var(--muted);
-      font-size: 0.85rem;
-      white-space: nowrap;
-    }
-
-    /* ========== COMMENT GENERATORS ========== */
+    /* Comment Generators */
     .gen-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
-
     .gen-btn {
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 22px 12px;
-      background: linear-gradient(145deg, rgba(201, 168, 124, 0.12), rgba(201, 168, 124, 0.04));
-      border: 1px solid rgba(201, 168, 124, 0.28);
+      padding: 20px 12px;
+      background: linear-gradient(145deg, rgba(201,168,124,0.12), rgba(201,168,124,0.04));
+      border: 1px solid rgba(201,168,124,0.28);
       border-radius: var(--radius);
       color: var(--text);
       text-decoration: none;
       font-weight: 600;
       font-size: 0.95rem;
       transition: all 0.25s ease;
-      cursor: pointer;
     }
-
     .gen-btn:hover {
-      background: linear-gradient(145deg, rgba(201, 168, 124, 0.22), rgba(201, 168, 124, 0.08));
+      background: linear-gradient(145deg, rgba(201,168,124,0.22), rgba(201,168,124,0.08));
       border-color: var(--accent);
       transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(201, 168, 124, 0.18);
+      box-shadow: 0 12px 30px rgba(201,168,124,0.18);
     }
 
-    .gen-btn .num {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      color: var(--accent);
-      line-height: 1;
-    }
-
-    .gen-btn small {
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    /* Footer */
     .footer-note {
       text-align: center;
       margin-top: 48px;
@@ -393,48 +250,19 @@
       letter-spacing: 0.04em;
     }
 
-    /* Responsive */
     @media (max-width: 560px) {
-      .hero {
-        height: 36vh;
-        min-height: 240px;
-      }
-
-      .platform-row {
-        gap: 10px;
-      }
-
-      .platform-btn {
-        padding: 18px 12px;
-      }
-
-      .media-table thead th,
-      .media-table td {
-        padding: 12px 10px;
-      }
-
-      .date-cell {
-        width: 70px;
-        font-size: 0.8rem;
-      }
-
-      .account-cell a {
-        font-size: 0.85rem;
-      }
-
-      .gen-grid {
-        gap: 10px;
-      }
-
-      .gen-btn {
-        padding: 18px 8px;
-      }
+      .hero { height: 36vh; min-height: 240px; }
+      .platform-btn { padding: 18px 12px; }
+      .media-table thead th, .media-table td { padding: 12px 10px; }
+      .date-cell { width: 70px; font-size: 0.8rem; }
+      .account-cell a { font-size: 0.85rem; }
+      .gen-btn { padding: 18px 8px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== 1. HEADER / BANNER ===== -->
+  <!-- Header -->
   <header class="hero">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
@@ -445,44 +273,36 @@
 
   <main class="container">
 
-    <!-- ===== 2. MEDIA LINKS SECTION ===== -->
+    <!-- Media Links -->
     <section>
       <p class="section-label">Media Links</p>
-
       <div class="platform-row">
         <button class="platform-btn" data-platform="x" aria-expanded="false">
           <div class="icon-wrap">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.792l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.792l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
           </div>
           <span>X (Twitter)</span>
         </button>
-
         <button class="platform-btn" data-platform="ig" aria-expanded="false">
           <div class="icon-wrap">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </div>
           <span>Instagram</span>
         </button>
       </div>
 
-      <!-- ========== X TABLE ========== -->
+      <!-- X Table -->
       <div id="panel-x" class="table-panel">
         <div class="table-header">
           <h3>PerthSanta</h3>
           <span class="count">2 posts</span>
         </div>
-        <table class="media-table" id="table-x">
+        <table class="media-table">
           <thead>
             <tr>
               <th style="width:56px">Status</th>
               <th>Account</th>
-              <th class="sortable" data-sort="date" style="width:90px">
-                Date <span class="sort-icon">↕</span>
-              </th>
+              <th class="sortable" style="width:90px">Date <span class="sort-icon">↕</span></th>
             </tr>
           </thead>
           <tbody>
@@ -490,10 +310,13 @@
               <td class="status-cell">🚀</td>
               <td>
                 <div class="account-cell">
-                  <div class="plat-icon" style="color: var(--x-color);">
+                  <div class="plat-icon" style="color:var(--x-color)">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.792l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
                   </div>
-                  <a href="https://x.com/StarArena_/status/2098406086772666733?a=MlziKa2JspyQ-k7FdY4&s=19" target="_blank" rel="noopener">@StarArena_ · PerthSanta × Ralph Lauren</a>
+                  <a href="twitter://status?id=2098406086772666733"
+                     onclick="setTimeout(()=>{window.location='https://x.com/StarArena_/status/2098406086772666733'},400);return true;">
+                    @StarArena_ · PerthSanta × Ralph Lauren
+                  </a>
                 </div>
               </td>
               <td class="date-cell">11-Sep</td>
@@ -502,10 +325,13 @@
               <td class="status-cell">🚀</td>
               <td>
                 <div class="account-cell">
-                  <div class="plat-icon" style="color: var(--x-color);">
+                  <div class="plat-icon" style="color:var(--x-color)">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.792l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
                   </div>
-                  <a href="https://x.com/StarArena_/status/2098393475695911397?a=RYF723qHuoEkXADkTTU&s=19" target="_blank" rel="noopener">@StarArena_ · PerthSanta Event</a>
+                  <a href="twitter://status?id=2098393475695911397"
+                     onclick="setTimeout(()=>{window.location='https://x.com/StarArena_/status/2098393475695911397'},400);return true;">
+                    @StarArena_ · PerthSanta Event
+                  </a>
                 </div>
               </td>
               <td class="date-cell">11-Sep</td>
@@ -514,20 +340,18 @@
         </table>
       </div>
 
-      <!-- ========== IG TABLE ========== -->
+      <!-- IG Table -->
       <div id="panel-ig" class="table-panel">
         <div class="table-header">
           <h3>PerthSanta</h3>
           <span class="count">2 posts</span>
         </div>
-        <table class="media-table" id="table-ig">
+        <table class="media-table">
           <thead>
             <tr>
               <th style="width:56px">Status</th>
               <th>Account</th>
-              <th class="sortable" data-sort="date" style="width:90px">
-                Date <span class="sort-icon">↕</span>
-              </th>
+              <th class="sortable" style="width:90px">Date <span class="sort-icon">↕</span></th>
             </tr>
           </thead>
           <tbody>
@@ -535,10 +359,13 @@
               <td class="status-cell">🚀</td>
               <td>
                 <div class="account-cell">
-                  <div class="plat-icon" style="color: var(--ig-color);">
+                  <div class="plat-icon" style="color:var(--ig-color)">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                   </div>
-                  <a href="https://www.instagram.com/reel/DdJmK-eTnla/?xtok=ZDhrbHJ5dTBxam43" target="_blank" rel="noopener">Instagram Reel · PerthSanta</a>
+                  <a href="instagram://media?shortcode=DdJmK-eTnla"
+                     onclick="setTimeout(()=>{window.location='https://www.instagram.com/reel/DdJmK-eTnla/'},400);return true;">
+                    Instagram Reel · PerthSanta
+                  </a>
                 </div>
               </td>
               <td class="date-cell">11-Sep</td>
@@ -547,10 +374,13 @@
               <td class="status-cell">🚀</td>
               <td>
                 <div class="account-cell">
-                  <div class="plat-icon" style="color: var(--ig-color);">
+                  <div class="plat-icon" style="color:var(--ig-color)">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                   </div>
-                  <a href="https://www.instagram.com/reel/DdJg8OWRS_p/?psln=MmFhYXl0bG51cnM3" target="_blank" rel="noopener">Instagram Reel · PerthSanta</a>
+                  <a href="instagram://media?shortcode=DdJg8OWRS_p"
+                     onclick="setTimeout(()=>{window.location='https://www.instagram.com/reel/DdJg8OWRS_p/'},400);return true;">
+                    Instagram Reel · PerthSanta
+                  </a>
                 </div>
               </td>
               <td class="date-cell">11-Sep</td>
@@ -560,32 +390,17 @@
       </div>
     </section>
 
-    <!-- ===== 3. COMMENT GENERATORS ===== -->
+    <!-- Comment Generators -->
     <section>
-      <p class="section-label">Comment Generators</p>
-
+      <p class="section-label">COMMENT GENERATORS</p>
       <div class="gen-grid">
-        <a class="gen-btn" href="https://perthsanta-captions-sparkle.lovable.app/" target="_blank" rel="noopener">
-          <span class="num">1</span>
-          <span>Gen 1</span>
-          <small>Comment</small>
-        </a>
-        <a class="gen-btn" href="https://perthsanta-captions-sparkle.lovable.app/" target="_blank" rel="noopener">
-          <span class="num">2</span>
-          <span>Gen 2</span>
-          <small>Comment</small>
-        </a>
-        <a class="gen-btn" href="https://perthsanta-captions-sparkle.lovable.app/" target="_blank" rel="noopener">
-          <span class="num">3</span>
-          <span>Gen 3</span>
-          <small>Comment</small>
-        </a>
+        <a class="gen-btn" href="https://perthsanta-captions-sparkle.lovable.app/" target="_blank" rel="noopener">Gen 1</a>
+        <a class="gen-btn" href="https://perthsanta-captions-sparkle.lovable.app/" target="_blank" rel="noopener">Gen 2</a>
+        <a class="gen-btn" href="https://perthsanta-captions-sparkle.lovable.app/" target="_blank" rel="noopener">Gen 3</a>
       </div>
     </section>
 
-    <p class="footer-note">
-      Made with ♡ for <strong>PerthSanta</strong>
-    </p>
+    <p class="footer-note">Made with ♡ for <strong>PerthSanta</strong></p>
   </main>
 
   <script>
@@ -595,20 +410,17 @@
       ig: document.getElementById('panel-ig')
     };
 
-    // Toggle platform panels
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
         const platform = btn.dataset.platform;
         const isActive = btn.classList.contains('active');
 
-        // Reset all
         buttons.forEach(b => {
           b.classList.remove('active');
           b.setAttribute('aria-expanded', 'false');
         });
         Object.values(panels).forEach(p => p.classList.remove('show'));
 
-        // Toggle current
         if (!isActive) {
           btn.classList.add('active');
           btn.setAttribute('aria-expanded', 'true');
@@ -617,26 +429,21 @@
       });
     });
 
-    // Sort by Date feature
+    // Sort Date
     document.querySelectorAll('.sortable').forEach(th => {
       let asc = true;
       th.addEventListener('click', () => {
         const table = th.closest('table');
         const tbody = table.querySelector('tbody');
         const rows = Array.from(tbody.querySelectorAll('tr'));
-
         rows.sort((a, b) => {
           const dateA = a.dataset.date;
           const dateB = b.dataset.date;
           return asc ? dateA.localeCompare(dateB) : dateB.localeCompare(dateA);
         });
-
         rows.forEach(row => tbody.appendChild(row));
         asc = !asc;
-
-        // Update icon
-        const icon = th.querySelector('.sort-icon');
-        icon.textContent = asc ? '↑' : '↓';
+        th.querySelector('.sort-icon').textContent = asc ? '↑' : '↓';
       });
     });
   </script>
