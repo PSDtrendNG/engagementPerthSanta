@@ -442,8 +442,7 @@
         th.querySelector('.sort-icon').textContent = asc ? '↑' : '↓';
       });
     });
-  </script>
-  // Tự động đếm số posts
+    // Tự động đếm số posts
 document.querySelectorAll('.table-panel').forEach(panel => {
   const countEl = panel.querySelector('[data-count]');
   const rows = panel.querySelectorAll('tbody tr');
@@ -451,6 +450,7 @@ document.querySelectorAll('.table-panel').forEach(panel => {
     countEl.textContent = `${rows.length} posts`;
   }
 });
+  </script>
 </body>
   </html>
 
