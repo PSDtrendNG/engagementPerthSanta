@@ -395,7 +395,7 @@
                 <a href="${post.url}" target="_blank" rel="noopener">${post.title}</a>
               </div>
             </td>
-            <td class="date-cell">${post.date}</td>
+            <td class="date-cell">${post.date} ${post.time || ''}</td>
           </tr>
         `).join('');
 
@@ -411,7 +411,7 @@
                 <a href="${post.url}" target="_blank" rel="noopener">${post.title}</a>
               </div>
             </td>
-            <td class="date-cell">${post.date}</td>
+            <td class="date-cell">${post.date} ${post.time || ''}</td>
           </tr>
         `).join('');
 
