@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,17 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #070707;
-      --card: linear-gradient(165deg, #1a0808 0%, #0f0f0f 50%, #0a0a0a 100%);
-      --border: #3f1a1a;
-      --border-hover: #991b1b;
+      --bg: #0a0a0b;
+      --card: rgba(255, 255, 255, 0.05);
+      --border: rgba(255, 255, 255, 0.12);
       --text: #f5f5f7;
       --muted: #a1a1aa;
-      --accent: #ef4444;
-      --accent-soft: #f87171;
+      --accent: #c9a87c;
       --ig-color: #e1306c;
       --radius: 16px;
-      --shadow: 0 12px 28px rgba(185, 28, 28, 0.22);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -44,14 +41,13 @@
       margin-bottom: 24px;
       transition: color 0.2s;
     }
-    .back-btn:hover { color: var(--accent-soft); }
+    .back-btn:hover { color: var(--accent); }
 
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: var(--shadow);
     }
     .table-header {
       display: flex;
@@ -59,7 +55,7 @@
       justify-content: space-between;
       padding: 16px 18px;
       border-bottom: 1px solid var(--border);
-      background: rgba(0,0,0,0.25);
+      background: rgba(255,255,255,0.03);
     }
     .table-header h3 {
       font-family: 'Playfair Display', Georgia, serif;
@@ -69,22 +65,76 @@
     .table-header .count {
       font-size: 0.78rem;
       color: var(--muted);
-      background: rgba(239, 68, 68, 0.12);
-      border: 1px solid rgba(239, 68, 68, 0.25);
+      background: rgba(255,255,255,0.06);
       padding: 4px 10px;
       border-radius: 20px;
     }
     .guide-note {
       padding: 14px 18px;
-      background: rgba(239, 68, 68, 0.08);
+      background: rgba(201, 168, 124, 0.08);
       border-bottom: 1px solid var(--border);
       font-size: 0.88rem;
-      color: var(--accent-soft);
+      color: var(--accent);
       font-weight: 600;
       letter-spacing: 0.03em;
       text-align: center;
     }
     .guide-note span { display: inline-block; margin: 0 4px; }
+
+    /* ===== HASHTAG BOXES ===== */
+    .hashtag-section {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .hashtag-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      position: relative;
+    }
+    .hashtag-box .label {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .hashtag-box .tags {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.55;
+      word-break: break-word;
+      white-space: pre-wrap;
+      padding-right: 70px;
+    }
+    .hashtag-box .copy-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(201, 168, 124, 0.15);
+      border: 1px solid rgba(201, 168, 124, 0.35);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .hashtag-box .copy-btn:hover {
+      background: rgba(201, 168, 124, 0.28);
+      border-color: var(--accent);
+    }
+    .hashtag-box .copy-btn.copied {
+      background: rgba(34, 197, 94, 0.2);
+      border-color: #22c55e;
+      color: #4ade80;
+    }
 
     .media-table { width: 100%; border-collapse: collapse; }
     .media-table thead th {
@@ -96,21 +146,19 @@
       color: var(--muted);
       font-weight: 600;
       border-bottom: 1px solid var(--border);
-      background: rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.2);
     }
     .media-table thead th.sortable { cursor: pointer; }
-    .media-table thead th.sortable:hover { color: var(--accent-soft); }
-    .media-table tbody tr { border-bottom: 1px solid rgba(63, 26, 26, 0.5); transition: background 0.2s; }
-    .media-table tbody tr:hover { background: rgba(239, 68, 68, 0.06); }
+    .media-table thead th.sortable:hover { color: var(--accent); }
+    .media-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.2s; }
+    .media-table tbody tr:hover { background: rgba(255,255,255,0.04); }
     .media-table td { padding: 14px 16px; font-size: 0.9rem; vertical-align: middle; }
     .status-cell { width: 56px; text-align: center; font-size: 1.25rem; }
     .account-cell { display: flex; align-items: center; gap: 10px; }
     .account-cell .plat-icon {
       width: 28px; height: 28px; border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(0,0,0,0.4);
-      border: 1px solid var(--border);
-      flex-shrink: 0;
+      background: rgba(255,255,255,0.08); flex-shrink: 0;
       color: var(--ig-color);
     }
     .account-cell .plat-icon svg { width: 15px; height: 15px; }
@@ -118,7 +166,7 @@
       color: var(--text); text-decoration: none; font-weight: 500;
       transition: color 0.2s; word-break: break-all;
     }
-    .account-cell a:hover { color: var(--accent-soft); }
+    .account-cell a:hover { color: var(--accent); }
     .date-cell { width: 90px; color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
   </style>
 </head>
@@ -132,8 +180,43 @@
         <span class="count" id="post-count">0 posts</span>
       </div>
 
+      <!-- Guide -->
       <div class="guide-note">
         <span>LIKE</span> · <span>SAVE</span> · <span>SHARE</span> · <span>COMMENTS</span> · <span>POST ON STORY</span>
+      </div>
+
+      <!-- Hashtag boxes -->
+      <div class="hashtag-section">
+        <!-- 1. PerthSanta (shared) -->
+        <div class="hashtag-box">
+          <div class="label">PerthSanta × Brand</div>
+          <div class="tags" id="tags-ps">@ralphlaurenfragrances
+@perthppe @santa.pp
+#RalphLaurenFragrances
+#RalphsClubNewYork
+#RalphLaurenFragrancesXPerthSanta</div>
+          <button class="copy-btn" onclick="copyTags('tags-ps', this)">Copy</button>
+        </div>
+
+        <!-- 2. Perth only -->
+        <div class="hashtag-box">
+          <div class="label">Perth × Brand</div>
+          <div class="tags" id="tags-perth">@ralphlaurenfragrances @perthppe
+#RalphLaurenFragrances
+#RalphsClubNewYork
+#RalphLaurenFragrancesXPerthSanta</div>
+          <button class="copy-btn" onclick="copyTags('tags-perth', this)">Copy</button>
+        </div>
+
+        <!-- 3. Santa only -->
+        <div class="hashtag-box">
+          <div class="label">Santa × Brand</div>
+          <div class="tags" id="tags-santa">@ralphlaurenfragrances @santa.pp
+#RalphLaurenFragrances
+#RalphsClubNewYork
+#RalphLaurenFragrancesXPerthSanta</div>
+          <button class="copy-btn" onclick="copyTags('tags-santa', this)">Copy</button>
+        </div>
       </div>
 
       <table class="media-table">
@@ -166,6 +249,22 @@
       });
     });
 
+    function copyTags(id, btn) {
+      const text = document.getElementById(id).innerText.trim();
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.classList.remove('copied');
+        }, 1800);
+      }).catch(err => {
+        console.error('Copy failed:', err);
+        alert('Could not copy. Please copy manually.');
+      });
+    }
+
     async function loadPosts() {
       try {
         const res = await fetch('data.json?v=' + Date.now());
@@ -191,7 +290,7 @@
 
         document.getElementById('post-count').textContent = `${data.ig.length} posts`;
       } catch (err) {
-        console.error('Lỗi load data.json:', err);
+        console.error('Error loading data.json:', err);
       }
     }
 
