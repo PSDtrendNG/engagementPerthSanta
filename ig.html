@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,12 +9,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0a0a0b;
+      --bg: #070707;
       --card: rgba(255, 255, 255, 0.05);
-      --border: rgba(255, 255, 255, 0.12);
+      --border: #3f1a1a;
       --text: #f5f5f7;
       --muted: #a1a1aa;
-      --accent: #c9a87c;
+      --accent: #ef4444;
+      --accent-soft: #f87171;
       --ig-color: #e1306c;
       --radius: 16px;
     }
@@ -41,7 +42,7 @@
       margin-bottom: 24px;
       transition: color 0.2s;
     }
-    .back-btn:hover { color: var(--accent); }
+    .back-btn:hover { color: var(--accent-soft); }
 
     .card {
       background: var(--card);
@@ -71,68 +72,71 @@
     }
     .guide-note {
       padding: 14px 18px;
-      background: rgba(201, 168, 124, 0.08);
+      background: rgba(239, 68, 68, 0.08);
       border-bottom: 1px solid var(--border);
       font-size: 0.88rem;
-      color: var(--accent);
+      color: var(--accent-soft);
       font-weight: 600;
       letter-spacing: 0.03em;
       text-align: center;
     }
     .guide-note span { display: inline-block; margin: 0 4px; }
 
-    /* ===== HASHTAG BOXES ===== */
-    .hashtag-section {
-      padding: 16px 18px;
+    /* ===== 3 HASHTAG BOXES – HÀNG NGANG ===== */
+    .hashtag-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 14px 14px;
       border-bottom: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      background: rgba(0,0,0,0.15);
     }
-    .hashtag-box {
-      background: rgba(255, 255, 255, 0.03);
+    .ht-box {
+      background: rgba(0,0,0,0.3);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 14px 16px;
-      position: relative;
+      padding: 10px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0;
     }
-    .hashtag-box .label {
-      font-size: 0.72rem;
+    .ht-label {
+      font-size: 0.68rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 8px;
+      color: var(--accent-soft);
+      font-weight: 700;
+      text-align: center;
     }
-    .hashtag-box .tags {
-      font-size: 0.88rem;
-      color: var(--text);
-      line-height: 1.55;
-      word-break: break-word;
+    .ht-content {
+      font-size: 0.72rem;
+      line-height: 1.45;
+      color: #e4e4e7;
       white-space: pre-wrap;
-      padding-right: 70px;
+      word-break: break-word;
+      flex: 1;
     }
-    .hashtag-box .copy-btn {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(201, 168, 124, 0.15);
-      border: 1px solid rgba(201, 168, 124, 0.35);
-      color: var(--accent);
-      font-size: 0.75rem;
+    .ht-copy {
+      align-self: center;
+      background: linear-gradient(145deg, rgba(239,68,68,0.25), rgba(239,68,68,0.1));
+      border: 1px solid rgba(239,68,68,0.45);
+      color: var(--accent-soft);
       font-weight: 600;
+      font-size: 0.72rem;
       padding: 5px 12px;
-      border-radius: 8px;
+      border-radius: 16px;
       cursor: pointer;
       transition: all 0.2s;
+      white-space: nowrap;
     }
-    .hashtag-box .copy-btn:hover {
-      background: rgba(201, 168, 124, 0.28);
-      border-color: var(--accent);
+    .ht-copy:hover {
+      background: linear-gradient(145deg, rgba(239,68,68,0.4), rgba(239,68,68,0.18));
+      transform: translateY(-1px);
     }
-    .hashtag-box .copy-btn.copied {
+    .ht-copy.copied {
       background: rgba(34, 197, 94, 0.2);
-      border-color: #22c55e;
+      border-color: rgba(34, 197, 94, 0.5);
       color: #4ade80;
     }
 
@@ -149,7 +153,7 @@
       background: rgba(0,0,0,0.2);
     }
     .media-table thead th.sortable { cursor: pointer; }
-    .media-table thead th.sortable:hover { color: var(--accent); }
+    .media-table thead th.sortable:hover { color: var(--accent-soft); }
     .media-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.2s; }
     .media-table tbody tr:hover { background: rgba(255,255,255,0.04); }
     .media-table td { padding: 14px 16px; font-size: 0.9rem; vertical-align: middle; }
@@ -166,8 +170,16 @@
       color: var(--text); text-decoration: none; font-weight: 500;
       transition: color 0.2s; word-break: break-all;
     }
-    .account-cell a:hover { color: var(--accent); }
+    .account-cell a:hover { color: var(--accent-soft); }
     .date-cell { width: 90px; color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
+
+    @media (max-width: 560px) {
+      .hashtag-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .ht-content { font-size: 0.78rem; }
+    }
   </style>
 </head>
 <body>
@@ -180,42 +192,41 @@
         <span class="count" id="post-count">0 posts</span>
       </div>
 
-      <!-- Guide -->
+      <!-- Hướng dẫn -->
       <div class="guide-note">
         <span>LIKE</span> · <span>SAVE</span> · <span>SHARE</span> · <span>COMMENTS</span> · <span>POST ON STORY</span>
       </div>
 
-      <!-- Hashtag boxes -->
-      <div class="hashtag-section">
-        <!-- 1. PerthSanta (shared) -->
-        <div class="hashtag-box">
-          <div class="label">PerthSanta × Brand</div>
-          <div class="tags" id="tags-ps">@ralphlaurenfragrances
-@perthppe @santa.pp
+      <!-- 3 Ô HASHTAG -->
+      <div class="hashtag-row">
+        <!-- PerthSanta -->
+        <div class="ht-box">
+          <div class="ht-label">PerthSanta</div>
+          <div class="ht-content" id="ht-perthsanta">@ralphlaurenfragrances @perthppe @santa.pp
 #RalphLaurenFragrances
 #RalphsClubNewYork
 #RalphLaurenFragrancesXPerthSanta</div>
-          <button class="copy-btn" onclick="copyTags('tags-ps', this)">Copy</button>
+          <button class="ht-copy" data-target="ht-perthsanta">Copy</button>
         </div>
 
-        <!-- 2. Perth only -->
-        <div class="hashtag-box">
-          <div class="label">Perth × Brand</div>
-          <div class="tags" id="tags-perth">@ralphlaurenfragrances @perthppe
+        <!-- Perth -->
+        <div class="ht-box">
+          <div class="ht-label">Perth</div>
+          <div class="ht-content" id="ht-perth">@ralphlaurenfragrances @perthppe
 #RalphLaurenFragrances
 #RalphsClubNewYork
 #RalphLaurenFragrancesXPerthSanta</div>
-          <button class="copy-btn" onclick="copyTags('tags-perth', this)">Copy</button>
+          <button class="ht-copy" data-target="ht-perth">Copy</button>
         </div>
 
-        <!-- 3. Santa only -->
-        <div class="hashtag-box">
-          <div class="label">Santa × Brand</div>
-          <div class="tags" id="tags-santa">@ralphlaurenfragrances @santa.pp
+        <!-- Santa -->
+        <div class="ht-box">
+          <div class="ht-label">Santa</div>
+          <div class="ht-content" id="ht-santa">@ralphlaurenfragrances @santa.pp
 #RalphLaurenFragrances
 #RalphsClubNewYork
 #RalphLaurenFragrancesXPerthSanta</div>
-          <button class="copy-btn" onclick="copyTags('tags-santa', this)">Copy</button>
+          <button class="ht-copy" data-target="ht-santa">Copy</button>
         </div>
       </div>
 
@@ -233,6 +244,25 @@
   </main>
 
   <script>
+    // Copy buttons cho 3 ô hashtag
+    document.querySelectorAll('.ht-copy').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const targetId = btn.dataset.target;
+        const text = document.getElementById(targetId).innerText;
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.textContent = 'Copied!';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.textContent = 'Copy';
+            btn.classList.remove('copied');
+          }, 1800);
+        } catch (err) {
+          alert('Không copy được, hãy copy thủ công nhé');
+        }
+      });
+    });
+
     document.querySelectorAll('.sortable').forEach(th => {
       let asc = true;
       th.addEventListener('click', () => {
@@ -248,22 +278,6 @@
         th.querySelector('.sort-icon').textContent = asc ? '↑' : '↓';
       });
     });
-
-    function copyTags(id, btn) {
-      const text = document.getElementById(id).innerText.trim();
-      navigator.clipboard.writeText(text).then(() => {
-        const original = btn.textContent;
-        btn.textContent = 'Copied!';
-        btn.classList.add('copied');
-        setTimeout(() => {
-          btn.textContent = original;
-          btn.classList.remove('copied');
-        }, 1800);
-      }).catch(err => {
-        console.error('Copy failed:', err);
-        alert('Could not copy. Please copy manually.');
-      });
-    }
 
     async function loadPosts() {
       try {
@@ -290,7 +304,7 @@
 
         document.getElementById('post-count').textContent = `${data.ig.length} posts`;
       } catch (err) {
-        console.error('Error loading data.json:', err);
+        console.error('Lỗi load data.json:', err);
       }
     }
 
