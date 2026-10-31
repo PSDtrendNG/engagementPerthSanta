@@ -32,11 +32,12 @@
       overflow-x: hidden;
     }
 
+    /* ===== HERO ===== */
     .hero {
       position: relative;
-      height: 42vh;
-      min-height: 280px;
-      max-height: 420px;
+      height: 48vh;
+      min-height: 300px;
+      max-height: 480px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -47,14 +48,20 @@
       inset: 0;
       background-image: url('picnuochoa.jpg');
       background-size: cover;
-      background-position: center center;
-      filter: brightness(0.55) contrast(1.05);
+      background-position: center top; /* nhìn thấy phần trên ảnh */
+      filter: brightness(0.72) contrast(1.05);
       z-index: 0;
     }
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(10,10,11,0.25) 0%, rgba(10,10,11,0.45) 50%, rgba(10,10,11,0.92) 100%);
+      /* overlay nhẹ hơn để ảnh rõ hơn */
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,11,0.15) 0%,
+        rgba(10,10,11,0.25) 40%,
+        rgba(10,10,11,0.75) 100%
+      );
       z-index: 1;
     }
     .hero-content {
@@ -89,6 +96,7 @@
       font-weight: 600;
     }
 
+    /* ===== PLATFORM BUTTONS ===== */
     .platform-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -112,6 +120,7 @@
       font-size: 0.95rem;
       position: relative;
       overflow: hidden;
+      text-decoration: none;
     }
     .platform-btn::before {
       content: '';
@@ -121,15 +130,13 @@
       opacity: 0;
       transition: opacity 0.25s;
     }
-    .platform-btn:hover,
-    .platform-btn.active {
+    .platform-btn:hover {
       background: var(--card-hover);
       border-color: rgba(201, 168, 124, 0.45);
       transform: translateY(-2px);
       box-shadow: var(--shadow);
     }
-    .platform-btn:hover::before,
-    .platform-btn.active::before { opacity: 1; }
+    .platform-btn:hover::before { opacity: 1; }
     .platform-btn .icon-wrap {
       width: 48px;
       height: 48px;
@@ -143,74 +150,7 @@
     .platform-btn[data-platform="ig"] .icon-wrap { color: var(--ig-color); }
     .platform-btn svg { width: 26px; height: 26px; }
 
-    .table-panel {
-      display: none;
-      animation: fadeSlide 0.3s ease;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-    .table-panel.show { display: block; }
-    @keyframes fadeSlide {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .table-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 18px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-    }
-    .table-header h3 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.15rem;
-      font-weight: 600;
-    }
-    .table-header .count {
-      font-size: 0.78rem;
-      color: var(--muted);
-      background: rgba(255,255,255,0.06);
-      padding: 4px 10px;
-      border-radius: 20px;
-    }
-    .media-table { width: 100%; border-collapse: collapse; }
-    .media-table thead th {
-      text-align: left;
-      padding: 12px 16px;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 600;
-      border-bottom: 1px solid var(--border);
-      background: rgba(0,0,0,0.2);
-      user-select: none;
-    }
-    .media-table thead th.sortable { cursor: pointer; }
-    .media-table thead th.sortable:hover { color: var(--accent); }
-    .media-table thead th .sort-icon { margin-left: 4px; font-size: 0.7rem; opacity: 0.6; }
-    .media-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.2s; }
-    .media-table tbody tr:last-child { border-bottom: none; }
-    .media-table tbody tr:hover { background: rgba(255,255,255,0.04); }
-    .media-table td { padding: 14px 16px; font-size: 0.9rem; vertical-align: middle; }
-    .status-cell { width: 56px; text-align: center; font-size: 1.25rem; }
-    .account-cell { display: flex; align-items: center; gap: 10px; }
-    .account-cell .plat-icon {
-      width: 28px; height: 28px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.08); flex-shrink: 0;
-    }
-    .account-cell .plat-icon svg { width: 15px; height: 15px; }
-    .account-cell a {
-      color: var(--text); text-decoration: none; font-weight: 500;
-      transition: color 0.2s; word-break: break-all;
-    }
-    .account-cell a:hover { color: var(--accent); }
-    .date-cell { width: 90px; color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
-
+    /* ===== COMMENT GENERATORS ===== */
     .gen-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -246,11 +186,8 @@
     }
 
     @media (max-width: 560px) {
-      .hero { height: 36vh; min-height: 240px; }
+      .hero { height: 40vh; min-height: 260px; }
       .platform-btn { padding: 18px 12px; }
-      .media-table thead th, .media-table td { padding: 12px 10px; }
-      .date-cell { width: 70px; font-size: 0.8rem; }
-      .account-cell a { font-size: 0.85rem; }
       .gen-btn { padding: 18px 8px; }
     }
   </style>
@@ -270,168 +207,33 @@
     <section>
       <p class="section-label">COMMENT GENERATORS</p>
       <div class="gen-grid">
-        <a class="gen-btn" href="https://psdtrendng.github.io/genRalphLauren/" target="_blank" rel="noopener">Gen 1</a>
-        <a class="gen-btn" href="https://screenshot-to-silhouette-192.lovable.app/" target="_blank" rel="noopener">Gen 2</a>
-        <a class="gen-btn" href="https://screenshot-to-spark-2005.lovable.app/" target="_blank" rel="noopener">Gen 3</a>
+        <a class="gen-btn" href="https://perthsanta-captions-sparkle.lovable.app/" target="_blank" rel="noopener">Gen 1</a>
+        <a class="gen-btn" href="https://perthsanta-captions-sparkle.lovable.app/" target="_blank" rel="noopener">Gen 2</a>
+        <a class="gen-btn" href="https://perthsanta-captions-sparkle.lovable.app/" target="_blank" rel="noopener">Gen 3</a>
       </div>
     </section>
 
     <section>
       <p class="section-label">Media Links</p>
       <div class="platform-row">
-        <button class="platform-btn" data-platform="x" aria-expanded="false">
+        <a href="x.html" class="platform-btn" data-platform="x">
           <div class="icon-wrap">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.792l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
           </div>
           <span>X (Twitter)</span>
-        </button>
-        <button class="platform-btn" data-platform="ig" aria-expanded="false">
+        </a>
+
+        <a href="ig.html" class="platform-btn" data-platform="ig">
           <div class="icon-wrap">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </div>
           <span>Instagram</span>
-        </button>
-      </div>
-
-      <!-- X Table -->
-      <div id="panel-x" class="table-panel">
-        <div class="table-header">
-          <h3>PerthSanta</h3>
-          <span class="count" data-count>0 posts</span>
-        </div>
-        <table class="media-table">
-          <thead>
-            <tr>
-              <th style="width:56px">Status</th>
-              <th>Account</th>
-              <th class="sortable" style="width:90px">Date <span class="sort-icon">↕</span></th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-
-      <!-- IG Table -->
-      <div id="panel-ig" class="table-panel">
-        <div class="table-header">
-          <h3>PerthSanta</h3>
-          <span class="count" data-count>0 posts</span>
-        </div>
-        <table class="media-table">
-          <thead>
-            <tr>
-              <th style="width:56px">Status</th>
-              <th>Account</th>
-              <th class="sortable" style="width:90px">Date <span class="sort-icon">↕</span></th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+        </a>
       </div>
     </section>
 
     <p class="footer-note">Made with ♡ for <strong>PerthSanta</strong></p>
   </main>
 
-  <script>
-    const buttons = document.querySelectorAll('.platform-btn');
-    const panels = {
-      x: document.getElementById('panel-x'),
-      ig: document.getElementById('panel-ig')
-    };
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const platform = btn.dataset.platform;
-        const isActive = btn.classList.contains('active');
-
-        buttons.forEach(b => {
-          b.classList.remove('active');
-          b.setAttribute('aria-expanded', 'false');
-        });
-        Object.values(panels).forEach(p => p.classList.remove('show'));
-
-        if (!isActive) {
-          btn.classList.add('active');
-          btn.setAttribute('aria-expanded', 'true');
-          panels[platform].classList.add('show');
-        }
-      });
-    });
-
-    // Sort Date
-    document.querySelectorAll('.sortable').forEach(th => {
-      let asc = true;
-      th.addEventListener('click', () => {
-        const table = th.closest('table');
-        const tbody = table.querySelector('tbody');
-        const rows = Array.from(tbody.querySelectorAll('tr'));
-        rows.sort((a, b) => {
-          const dateA = a.dataset.date;
-          const dateB = b.dataset.date;
-          return asc ? dateA.localeCompare(dateB) : dateB.localeCompare(dateA);
-        });
-        rows.forEach(row => tbody.appendChild(row));
-        asc = !asc;
-        th.querySelector('.sort-icon').textContent = asc ? '↑' : '↓';
-      });
-    });
-
-    // Load dữ liệu từ data.json
-    async function loadPosts() {
-  try {
-    const res = await fetch('data.json?v=' + Date.now());
-    const data = await res.json();
-
-    // Sort tăng dần theo thời gian
-    data.x.sort((a, b) => a.dateSort.localeCompare(b.dateSort));
-    data.ig.sort((a, b) => a.dateSort.localeCompare(b.dateSort));
-
-    const xBody = document.querySelector('#panel-x tbody');
-    xBody.innerHTML = data.x.map(post => `
-      <tr data-date="${post.dateSort}">
-        <td class="status-cell">🚀</td>
-        <td>
-          <div class="account-cell">
-            <div class="plat-icon" style="color:var(--x-color)">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.792l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
-            </div>
-            <a href="${post.url}" target="_blank" rel="noopener">${post.title}</a>
-          </div>
-        </td>
-        <td class="date-cell">${post.date}${post.time ? ' ' + post.time : ''}</td>
-      </tr>
-    `).join('');
-
-    const igBody = document.querySelector('#panel-ig tbody');
-    igBody.innerHTML = data.ig.map(post => `
-      <tr data-date="${post.dateSort}">
-        <td class="status-cell">🚀</td>
-        <td>
-          <div class="account-cell">
-            <div class="plat-icon" style="color:var(--ig-color)">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </div>
-            <a href="${post.url}" target="_blank" rel="noopener">${post.title}</a>
-          </div>
-        </td>
-        <td class="date-cell">${post.date}${post.time ? ' ' + post.time : ''}</td>
-      </tr>
-    `).join('');
-
-    // Update count
-    document.querySelectorAll('.table-panel').forEach(panel => {
-      const countEl = panel.querySelector('[data-count]');
-      const rows = panel.querySelectorAll('tbody tr');
-      if (countEl) countEl.textContent = `${rows.length} posts`;
-    });
-
-  } catch (err) {
-    console.error('Lỗi load data.json:', err);
-  }
-}
-
-loadPosts();
-  </script>
 </body>
 </html>
