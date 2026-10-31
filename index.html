@@ -34,7 +34,7 @@
       overflow-x: hidden;
     }
 
-    /* ===== HERO – ảnh hiện FULL ===== */
+    /* ===== HERO – ảnh ngang + cắt nửa thân dưới ===== */
     .hero-wrap {
       max-width: 720px;
       margin: 12px auto 0;
@@ -47,14 +47,14 @@
       overflow: hidden;
       border: 1px solid rgba(127, 29, 29, 0.35);
       background: #000;
-      /* không cố định height → ảnh hiện full theo tỉ lệ */
+      aspect-ratio: 16 / 10;
     }
     .hero img {
       display: block;
       width: 100%;
-      height: auto;
-      object-fit: contain; /* hiện full ảnh, không cắt */
-      vertical-align: middle;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
     }
     .hero-overlay {
       position: absolute;
@@ -201,7 +201,7 @@
 
     @media (max-width: 560px) {
       .hero-wrap { padding: 0 12px; margin-top: 10px; }
-      .hero { border-radius: 16px; }
+      .hero { border-radius: 16px; aspect-ratio: 16 / 11; }
       .hero-content { padding-top: 14px; }
       .platform-btn { padding: 18px 12px; }
       .gen-btn { padding: 16px 8px; font-size: 0.88rem; }
@@ -210,7 +210,6 @@
 </head>
 <body>
 
-  <!-- HERO: ảnh hiện FULL -->
   <div class="hero-wrap">
     <header class="hero">
       <img src="picnuochoa.jpg" alt="PerthSanta" />
